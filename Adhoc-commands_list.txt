@@ -1,0 +1,42 @@
+System commands
+ansible multi -a "hostname"
+ansible multi -a "df -h"
+ansible multi -a "free -m"
+ansible multi -a "date"
+
+Installing and managing services 
+ansible multi -s -m yum -a "name=ntp state=installed"
+ansible multi -s -m service -a "name=httpd state=started enabled=yes"
+
+Manage cron jobs
+ansible multi -s -m cron -a "name='daily-cron-all-servers' \
+hour=4 job='/path/to/daily-script.sh'"
+to remove the cron job
+ansible multi -s -m cron -a "name='daily-cron-all-servers' state=absent"
+You can also use Ansible to manage custom crontab files; use the same syntax as you used earlier,
+
+Manage users and groups
+ansible app -s -m group -a "name=admin state=present"
+ansible app -s -m user -a "name=johndoe group=admin createhome=yes"
+ansible app -s -m user -a "name=johndoe state=absent remove=yes"
+
+Manage files and directories
+Get information about a file
+ansible multi -m stat -a "path=/etc/environment"
+Copy a file to the servers
+ansible multi -m copy -a "src=/etc/hosts dest=/tmp/hosts"
+
+Retrieve a file from the servers
+ansible multi -s -m fetch -a "src=/etc/hosts dest=/tmp"
+
+Create directories and files
+ansible multi -m file -a "dest=/tmp/test mode=644 state=directory"
+
+Here’s how to create a symlink (set state=link):
+$ ansible multi -m file -a "src=/src/symlink dest=/dest/symlink \
+owner=root group=root state=link"
+
+Delete directories and files
+You can set the state to absent to delete a file or directory.
+$ ansible multi -m file -a "dest=/tmp/test state=absent"
+

@@ -1,0 +1,7 @@
+---
+ - hosts: all
+   become: true
+   become_user: root
+   tasks:
+    - name: Disable selinux using command module
+      command: setenforce 1

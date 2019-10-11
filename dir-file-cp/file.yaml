@@ -1,0 +1,13 @@
+---
+  - hosts: web-server
+    become: true
+    become_user: root
+
+    
+
+    tasks:
+     - name: Creating a file 
+       file: path={{my_file}} state=touch 
+
+     - name: Adding test to the file
+       blockinfile: path= {{ my_file }} block= This is file created using playbook

@@ -1,0 +1,39 @@
+---
+ - hosts: db-server
+   become: true
+   become_user: root
+   tasks:
+    - name: Installing open jdk
+      yum: name=java-1.8.0-openjdk state=installed
+
+    - name: Adding JAVA path in .bash_profile
+      lineinfile:
+        path: /etc/environment
+        line: export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.191.b12-1.el7_6.x86_64/jre/bin/java
+
+    - name: Refreshing .bash_profile
+      shell: source /etc/environment
+
+    - name: verify installation
+      shell: java -version
+      register: j_version
+
+    - debug:  
+        msg: "Java version {{ j_version.stderr }}"
+
+    - debug:
+        msg: msg="Java home {{ ansible_env.JAVA_HOME }}"
+
+    - name: Installing tomcat 
+      yum: name=tomcat state=installed
+
+    - name: Downloading Jenkins server war file
+      get_url:
+        url: http://mirrors.jenkins.io/war-stable/latest/jenkins.war
+        dest: /usr/share/tomcat/webapps
+
+    - name: Starting service 
+      service: 
+        name: tomcat
+        state: started 
+        enabled: yes 

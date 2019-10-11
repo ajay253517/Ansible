@@ -1,0 +1,15 @@
+---
+ - hosts: remote-servers
+   become_user: root
+   become: true 
+
+   tasks:
+   - name: deleteing file in the remote server 
+     file:
+      path: /etc/ansible/facts.d/getSerial.fact
+      state: absent
+
+   - name: deleteing directory 
+     file:
+      path: /etc/ansible
+      state: absent 

@@ -1,0 +1,33 @@
+all:
+  hosts:
+    mail.example.com
+
+  appstack:
+    webservers:
+      hosts:
+        prod.web1.example.com
+        dev.web1.example.com
+
+    dbservers:
+      hosts:
+        prod.db1.example.com
+        dev.db1.example.com
+        
+   envservers:
+     prodserver:
+       hosts:
+         prod.web1.example.com
+         prod1.db1.example.com
+
+     devservers:
+       hosts:
+         dev.web1.example.com
+         dev.db1.example.com
+
+   dcservers:
+     us-east1:
+       hosts:
+         east:dc1.example.com
+     us-west2:
+       hosts:
+         west.dc2.example.com

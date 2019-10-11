@@ -1,0 +1,8 @@
+#!/bin/bash
+
+SERIAL_NUM=`dmidecode | grep "Serial Number" | head -n1 | sed -e 's/\tSerial Number: //g'`
+cat <<EOF
+{
+ "serial_number" : "$SERIAL_NUM"
+}
+EOF

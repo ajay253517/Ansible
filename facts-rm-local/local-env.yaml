@@ -1,0 +1,20 @@
+---
+ - hosts: all
+   gather_facts: true
+   vars:
+    local_path: "{{ lookup('env','PATH') }}"
+   become: yes
+   become_user: root
+
+   tasks:
+    - name: Printing the environment​ variable in controller
+      debug:
+        msg: "{{ lookup('env','HOME') }}"
+
+    - name: Printing multiple environment​ variable in controller
+      debug:
+        msg: "{{ lookup('env','USER','HOSTNAME','SHELL') }}"
+
+    - name: Using variable and Printing environment​ variable in controller
+      debug:
+        msg: "{{ local_path }}"

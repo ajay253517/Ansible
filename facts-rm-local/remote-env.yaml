@@ -1,0 +1,25 @@
+---
+ - hosts: remote-servers
+   vars:
+    remote_logname: "{{ ansible_env.LOGNAME }}"
+
+   become: yes
+   become_user: ansible
+   gather_facts: true
+
+   tasks:
+    - name: Printing the environment varaible from remote-servers
+      debug:
+        msg: "{{ ansible_env.HOME }}"
+
+    - name: Printing the multiple environment varaibles from remote-servers
+      debug:
+        msg: "{{ ansible_env.PATH , ansible_env.SHELL }} "
+
+    - name: Using variable and Printing environment​ variable in remote-servers
+      debug:
+        msg: "{{ remote_logname }}"
+
+    - name: Print all the variables 
+      debug:
+        msg: "{{ ansible_env }}"

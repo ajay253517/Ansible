@@ -1,0 +1,8 @@
+---
+ - hosts: all
+   become: yes
+   become_user: root
+   gather_facts: false
+   tasks:
+    - name: Creating log file using shell 
+      shell: echo "File created using ansible shell on $(date +%d-%m-%y--%HH-%MM-%SS)" >> /var/log/ansible_cu_log

@@ -1,0 +1,17 @@
+---
+ - hosts: db-server
+   tasks:
+    - name: Copying file to remote server 
+      copy:
+        src: /etc/yum.repos.d/cento.repo
+        dest: /etc/yum.repos.d/
+
+    - name: creating a repo directory
+      file:
+        dest: /mnt/repo
+        state: directory
+
+    - name: Mounting directory
+      mount:
+        src: /dev/sr0
+        dest: /mnt/repo

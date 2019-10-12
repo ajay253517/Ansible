@@ -1,0 +1,11 @@
+---
+ - hosts: remote-servers
+   gather_facts: no
+   tasks:
+   - name: Printing group variable value
+     debug:
+       msg: "{{grp_var}}"
+
+   - name: Printing host and group variable value
+     debug:
+       msg: "{{log_dir}}"

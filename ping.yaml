@@ -1,5 +1,9 @@
 ---
- - hosts : all
+ - hosts : remote-servers
    tasks :
     - name: Ping to all hosts in inventory
       ping: 
+    
+    - name: Printing ip address using facts
+      debug: 
+        msg: "{{ ansible_all_ipv4_addresses }}"

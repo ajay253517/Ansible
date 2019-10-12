@@ -1,5 +1,4 @@
 #Ignoreing directory 
-confignck/*
+configbck/*
 *.ini
 *.war
-

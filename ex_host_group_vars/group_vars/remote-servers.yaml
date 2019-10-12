@@ -1,0 +1,3 @@
+---
+log_dir: /var/my_logs
+grp_var: group_variables

@@ -4,11 +4,16 @@ Below are some of the commonly ad-hoc command and playbooks.
 Adhoc-commands_list.txt -- Contains ad-hoc commands.
 
 List of playbooks and use cases
-command-playbook.yaml -- Sample for command module.
-copyfile.yaml -- mount directory and copy file.
-custom_facts.yaml -- creating custom facts.
-delete-file-dir.yaml -- Deleting file and directory 
+command-playbook.yaml
+	 -- Sample for command module.
+copyfile.yaml 
+	-- mount directory and copy file.
+custom_facts.yaml 
+	-- creating custom facts.
+delete-file-dir.yaml 
+	-- Deleting file and directory 
 facts.yaml
+	-- gather facts
 file.yaml
 git_install.yaml
 gvars.yaml
